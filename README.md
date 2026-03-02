@@ -28,16 +28,20 @@ The `setup.sh` script performs the following steps:
 
 If you prefer to inspect the script first:
 
+1. Download the script:
+
 ```bash
-# 1. Download the script
-curl -fsSL -o setup.sh \
-  https://alvarorg14.github.io/nvidia-dgx-spark-setup/scripts/setup.sh
+curl -fsSL -o setup.sh https://alvarorg14.github.io/nvidia-dgx-spark-setup/scripts/setup.sh
+```
 
-# 2. Review it
-cat setup.sh
+2. Make it executable
 
-# 3. Make it executable and run
+```bash
 chmod +x setup.sh
+```
+
+3. Run it
+```bash
 ./setup.sh
 ```
 
@@ -53,17 +57,27 @@ curl -fsSL https://alvarorg14.github.io/nvidia-dgx-spark-setup/scripts/setup.sh 
 
 Once `cloudflared` is installed you can create a tunnel:
 
+1. Authenticate with your Cloudflare account:
+
 ```bash
-# Authenticate with your Cloudflare account
 cloudflared tunnel login
+```
 
-# Create a new tunnel
+2. Create a new tunnel:
+
+```bash
 cloudflared tunnel create my-dgx-spark
+```
 
-# Route traffic (replace with your hostname and tunnel ID)
+3. Route traffic (replace with your hostname and tunnel ID):
+
+```bash
 cloudflared tunnel route dns my-dgx-spark my-dgx-spark.example.com
+```
 
-# Run the tunnel
+4. Run the tunnel:
+
+```bash
 cloudflared tunnel run my-dgx-spark
 ```
 
