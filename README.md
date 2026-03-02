@@ -55,30 +55,31 @@ curl -fsSL https://alvarorg14.github.io/nvidia-dgx-spark-setup/scripts/setup.sh 
 
 ### After Installation
 
-Once `cloudflared` is installed you can create a tunnel:
+Once `cloudflared` is installed, connect it to an existing tunnel from your Cloudflare Zero Trust dashboard.
 
-1. Authenticate with your Cloudflare account:
+1. Get your tunnel token from the [Cloudflare Zero Trust dashboard](https://one.dash.cloudflare.com/):
+   - Go to **Networks** > **Tunnels**.
+   - Select your tunnel (or create a new one).
+   - Click **Configure** and copy the tunnel token.
+
+2. Install the tunnel as a system service on your DGX Spark:
 
 ```bash
-cloudflared tunnel login
+sudo cloudflared service install <TOKEN>
 ```
 
-2. Create a new tunnel:
+Replace `<TOKEN>` with the token copied from the dashboard.
+
+> **Note:** The token is a sensitive value. Avoid storing it in scripts or version control. If you need to automate this step, pass it via an environment variable:
+>
+> ```bash
+> sudo cloudflared service install "$CLOUDFLARE_TUNNEL_TOKEN"
+> ```
+
+3. Verify the service is running:
 
 ```bash
-cloudflared tunnel create my-dgx-spark
-```
-
-3. Route traffic (replace with your hostname and tunnel ID):
-
-```bash
-cloudflared tunnel route dns my-dgx-spark my-dgx-spark.example.com
-```
-
-4. Run the tunnel:
-
-```bash
-cloudflared tunnel run my-dgx-spark
+sudo systemctl status cloudflared
 ```
 
 For full documentation see the [Cloudflare Tunnel docs](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/).
