@@ -104,3 +104,12 @@ https://alvarorg14.github.io/nvidia-dgx-spark-setup/
 1. Place new scripts in the `scripts/` directory.
 2. Update the **Available Scripts** table above.
 3. Push to `main` — GitHub Pages will automatically deploy.
+
+
+```bash
+ps aux | grep -E 'apt|dpkg'
+```
+
+```bash
+sudo kill -9 PID
+```
