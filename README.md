@@ -113,3 +113,17 @@ ps aux | grep -E 'apt|dpkg'
 ```bash
 sudo kill -9 PID
 ```
+
+```bash
+sudo apt -f install
+```
+
+```bash
+sudo apt-get update
+```
+
+```bash
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y cloudflared
+```
+
+
