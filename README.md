@@ -126,4 +126,6 @@ sudo apt-get update
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y cloudflared
 ```
 
-
+```bash
+s#it8ZroDqSJXJVxiNkMRSTc2p1HLyjDa5FubXhWEvTNg
+```
